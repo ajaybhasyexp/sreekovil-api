@@ -1,0 +1,7 @@
+.vs
+packages
+/SreeKovil.API/bin
+obj
+bin
+/.vscode
+/COSMO.API/COSMO.API.csproj.user

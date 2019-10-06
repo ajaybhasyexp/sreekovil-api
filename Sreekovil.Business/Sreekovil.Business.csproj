@@ -1,0 +1,34 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp2.1</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Remove="BatchAssignmentService.cs" />
+    <Compile Remove="BatchService.cs" />
+    <Compile Remove="CourseFeeService.cs" />
+    <Compile Remove="CourseService.cs" />
+    <Compile Remove="ExpenseHeadService.cs" />
+    <Compile Remove="ExpenseService.cs" />
+    <Compile Remove="IncomeHeadService.cs" />
+    <Compile Remove="IncomeService.cs" />
+    <Compile Remove="StaffService.cs" />
+    <Compile Remove="StudentAssignmentService.cs" />
+    <Compile Remove="StudentService.cs" />
+    <Compile Remove="UserRoleService.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.Extensions.Options" Version="2.1.1" />
+    <PackageReference Include="Microsoft.IdentityModel.Tokens" Version="5.4.0" />
+    <PackageReference Include="System.IdentityModel.Tokens.Jwt" Version="5.4.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Sreekovil.Business.Abstractions\Sreekovil.Business.Abstractions.csproj" />
+    <ProjectReference Include="..\Sreekovil.Data.Abstractions\Sreekovil.Data.Abstractions.csproj" />
+    <ProjectReference Include="..\Sreekovil.Logger\Sreekovil.Logger.csproj" />
+    <ProjectReference Include="..\Sreekovil.Models\Sreekovil.Models.csproj" />
+  </ItemGroup>
+</Project>

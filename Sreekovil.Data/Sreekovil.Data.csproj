@@ -1,0 +1,34 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp2.1</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Remove="Repositories\BatchAssignmentRepository.cs" />
+    <Compile Remove="Repositories\BatchRepository.cs" />
+    <Compile Remove="Repositories\CourseFeeRepository.cs" />
+    <Compile Remove="Repositories\CourseRepository.cs" />
+    <Compile Remove="Repositories\ExpenseHeadRepository.cs" />
+    <Compile Remove="Repositories\ExpenseRepository.cs" />
+    <Compile Remove="Repositories\IncomeHeadRepository.cs" />
+    <Compile Remove="Repositories\IncomeRepository.cs" />
+    <Compile Remove="Repositories\ReceiptRepository.cs" />
+    <Compile Remove="Repositories\StaffRepository.cs" />
+    <Compile Remove="Repositories\StudentAssignmentRepository.cs" />
+    <Compile Remove="Repositories\StudentRepository.cs" />
+    <Compile Remove="Repositories\UserRoleRespository.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Dapper" Version="2.0.30" />
+    <PackageReference Include="Dapper.Contrib" Version="2.0.30" />
+    <PackageReference Include="Microsoft.Extensions.Configuration" Version="2.1.1" />
+    <PackageReference Include="MySql.Data" Version="8.0.15" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Sreekovil.Data.Abstractions\Sreekovil.Data.Abstractions.csproj" />
+    <ProjectReference Include="..\Sreekovil.Models\Sreekovil.Models.csproj" />
+  </ItemGroup>
+</Project>

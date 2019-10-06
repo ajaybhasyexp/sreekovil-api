@@ -1,0 +1,26 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp2.1</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Remove="IBatchAssignmentService.cs" />
+    <Compile Remove="IBatchService.cs" />
+    <Compile Remove="ICourseFeeService.cs" />
+    <Compile Remove="ICourseService.cs" />
+    <Compile Remove="IExpenseHeadService.cs" />
+    <Compile Remove="IExpenseService.cs" />
+    <Compile Remove="IIncomeHeadService.cs" />
+    <Compile Remove="IIncomeService.cs" />
+    <Compile Remove="IStaffService.cs" />
+    <Compile Remove="IStudentAssignmentService.cs" />
+    <Compile Remove="IStudentService.cs" />
+    <Compile Remove="IUserRoleService.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Sreekovil.Models\Sreekovil.Models.csproj" />
+  </ItemGroup>
+
+</Project>
