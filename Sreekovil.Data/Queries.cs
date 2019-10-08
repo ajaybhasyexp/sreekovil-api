@@ -7,19 +7,8 @@
     {
         public static readonly string GetUserById = "Select * from `Users` where UserId = {0}";
 
-        public static readonly string GetUserByUname = @"SELECT u.id  AS userid, 
-                                                           ur.id AS Roleid, 
-                                                           ur.role, 
-                                                           u.profilepic, 
-                                                           u.email, 
-                                                           u.branchid, 
-                                                           u.username, 
-                                                           u.userroleid 
-                                                    FROM   users u 
-                                                           INNER JOIN userroles ur 
-                                                                   ON u.userroleid = ur.id 
-                                                    WHERE  username = '{0}' 
-                                                           AND password = '{1}' ";
+        public static readonly string GetUserByUname = @"SELECT u.id, u.email, u.templeid FROM   Users u 
+                                                         WHERE  u.email = '{0}' AND u.password = '{1}' ";
 
         public static readonly string Branch_Save = @"INSERT INTO `branchs` 
                                                     ( 

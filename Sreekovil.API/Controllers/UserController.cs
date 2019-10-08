@@ -46,7 +46,7 @@ namespace Sreekovil.API.Controllers
                 }
                 return response;
             }
-            catch
+            catch(Exception ex)
             {
                 return response.HandleException(response);
             }

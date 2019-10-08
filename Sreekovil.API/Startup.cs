@@ -34,6 +34,7 @@ namespace Sreekovil.API
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
             services.AddTransient<ITempleRepository, TempleRepository>();
             services.AddTransient<IUserRepository, UserRepository>();
+            services.AddTransient<IOfferingRepository, OfferingRepository>();
 
             //services.AddTransient<IBranchRepository, BranchRepository>();
             //services.AddTransient<ICourseRepository, CourseRepository>();
@@ -43,6 +44,7 @@ namespace Sreekovil.API
             services.AddTransient<ICommonResource, CommonResource>();
             services.AddTransient<IUserService, UserService>();
             services.AddTransient<ITempleService, TempleService>();
+            services.AddTransient<IOfferingService, OfferingService>();
 
             services.AddLocalization(o => o.ResourcesPath = "Resources");
             services.Configure<RequestLocalizationOptions>(options =>
