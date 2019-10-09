@@ -37,11 +37,12 @@ namespace Sreekovil.API.Controllers
             _commonResource = commonResource;
         }
 
+        #region Public Methods
 
         /// <summary>
-        /// Gets all the temple entities.
+        /// Gets all the Offering entities.
         /// </summary>
-        /// <returns>A list of temple entity.</returns>
+        /// <returns>A list of Offering entity.</returns>
         [HttpGet]
         public ResponseDto<List<Offering>> GetAll()
         {
@@ -59,10 +60,10 @@ namespace Sreekovil.API.Controllers
         }
 
         /// <summary>
-        /// Get the temple entity based on the id.
+        /// Get the offering entity based on the id.
         /// </summary>
         /// <param name="id">The identfier.</param>
-        /// <returns>A temple entity.</returns>
+        /// <returns>An offering entity.</returns>
         [HttpGet]
         [Route("{id}")]
         public ResponseDto<Offering> Get([FromRoute] int id)
@@ -81,10 +82,10 @@ namespace Sreekovil.API.Controllers
         }
 
         /// <summary>
-        /// Saves or updates the temple.
+        /// Saves or updates the Offering.
         /// </summary>
-        /// <param name="temple">Temple entity to save.</param>
-        /// <returns>Saved temple entity.</returns>
+        /// <param name="offering">Offering entity to save.</param>
+        /// <returns>Saved Offering entity.</returns>
         [HttpPost]
         public ResponseDto<Offering> Save([FromBody]Offering offering)
         {
@@ -94,16 +95,16 @@ namespace Sreekovil.API.Controllers
                 response.Data = _offeringService.Save(offering);
                 return response;
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 return response.HandleException(response);
             }
         }
 
         /// <summary>
-        /// Deletes the temple entity.
+        /// Deletes the offering entity.
         /// </summary>
-        /// <param name="temple">The temple entity to delete.</param>
+        /// <param name="offering">The offering entity to delete.</param>
         /// <returns>A boolean result based on deletion.</returns>
         [HttpDelete]
         public ResponseDto<bool> Delete([FromBody] Offering offering)
@@ -119,5 +120,7 @@ namespace Sreekovil.API.Controllers
                 return response.HandleDeleteException(response, ex);
             }
         }
+
+        #endregion
     }
 }

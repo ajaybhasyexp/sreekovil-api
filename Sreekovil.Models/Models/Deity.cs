@@ -2,7 +2,7 @@
 {
     public class Deity : Base
     {
-        public int DeityName { get; set; }
+        public string DeityName { get; set; }
 
         public bool IsMain { get; set; }
 

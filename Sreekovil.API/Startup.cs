@@ -15,7 +15,6 @@ using Sreekovil.Models.Common;
 using Swashbuckle.AspNetCore.Swagger;
 using System.Globalization;
 using System.Text;
-using System.Threading.Tasks;
 
 namespace Sreekovil.API
 {
@@ -35,6 +34,7 @@ namespace Sreekovil.API
             services.AddTransient<ITempleRepository, TempleRepository>();
             services.AddTransient<IUserRepository, UserRepository>();
             services.AddTransient<IOfferingRepository, OfferingRepository>();
+            services.AddTransient<IDeityRepository, DeityRepository>();
 
             //services.AddTransient<IBranchRepository, BranchRepository>();
             //services.AddTransient<ICourseRepository, CourseRepository>();
@@ -45,6 +45,7 @@ namespace Sreekovil.API
             services.AddTransient<IUserService, UserService>();
             services.AddTransient<ITempleService, TempleService>();
             services.AddTransient<IOfferingService, OfferingService>();
+            services.AddTransient<IDeityService, DeityService>();
 
             services.AddLocalization(o => o.ResourcesPath = "Resources");
             services.Configure<RequestLocalizationOptions>(options =>
