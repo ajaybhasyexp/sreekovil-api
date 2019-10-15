@@ -35,6 +35,7 @@ namespace Sreekovil.API
             services.AddTransient<IUserRepository, UserRepository>();
             services.AddTransient<IOfferingRepository, OfferingRepository>();
             services.AddTransient<IDeityRepository, DeityRepository>();
+            services.AddTransient<IOfferingTransactionRepository, OfferingTransactionRepository>();
 
             //services.AddTransient<IBranchRepository, BranchRepository>();
             //services.AddTransient<ICourseRepository, CourseRepository>();
@@ -46,6 +47,7 @@ namespace Sreekovil.API
             services.AddTransient<ITempleService, TempleService>();
             services.AddTransient<IOfferingService, OfferingService>();
             services.AddTransient<IDeityService, DeityService>();
+            services.AddTransient<IOfferingTransactionService, OfferingTransactionService>();
 
             services.AddLocalization(o => o.ResourcesPath = "Resources");
             services.Configure<RequestLocalizationOptions>(options =>
