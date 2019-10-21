@@ -29,6 +29,11 @@ namespace Sreekovil.Business
         /// </summary>
         private readonly AppSettings _appSettings;
 
+        /// <summary>
+        /// The repository for temple related data methods.
+        /// </summary>
+        private ITempleRepository _templeRepository { get; set; }
+
         #endregion
 
         /// <summary>
@@ -36,10 +41,11 @@ namespace Sreekovil.Business
         /// </summary>
         /// <param name="userRepository">User repository to inject.</param>
         /// <param name="appSettings">The app setting to inject.</param>
-        public UserService(IUserRepository userRepository, IOptions<AppSettings> appSettings)
+        public UserService(IUserRepository userRepository, IOptions<AppSettings> appSettings, ITempleRepository templeRepository)
         {
             _userRepository = userRepository;
             _appSettings = appSettings.Value;
+            _templeRepository = templeRepository;
         }
 
         /// <summary>
@@ -56,22 +62,29 @@ namespace Sreekovil.Business
             if (user == null)
                 return null;
 
+            var temple = _templeRepository.GetTempleByUserId(user.Id);
+
+            if (temple == null)
+                return null;
+
             // authentication successful so generate jwt token
             var tokenHandler = new JwtSecurityTokenHandler();
-            var key = Encoding.ASCII.GetBytes(_appSettings.Secret);
+            var key = Encoding.ASCII.GetBytes(_appSettings.Jwt.Secret);
             var tokenDescriptor = new SecurityTokenDescriptor
             {
                 Subject = new ClaimsIdentity(new Claim[]
                 {
-                    new Claim(ClaimTypes.Name, user.Id.ToString()),
+                    new Claim(CustomClaims.UserId, user.Id.ToString()),
                     new Claim(ClaimTypes.GivenName,user.Email),
+                    new Claim(CustomClaims.TempleId,temple.Id.ToString())
                     //new Claim(ClaimTypes.Role,user.UserRoleId.ToString())
                 }),
-                Expires = DateTime.UtcNow.AddDays(7),
+                Expires = DateTime.UtcNow.AddMinutes(_appSettings.Jwt.ExpiryInMinutes),
                 SigningCredentials = new SigningCredentials(new SymmetricSecurityKey(key), SecurityAlgorithms.HmacSha256Signature)
             };
             var token = tokenHandler.CreateToken(tokenDescriptor);
             user.Token = tokenHandler.WriteToken(token);
+            user.Temple = temple;
 
             // remove password before returning
             user.Password = null;
@@ -106,5 +119,6 @@ namespace Sreekovil.Business
         /// </summary>
         /// <param name="user">The user entity to delete.</param>
         public void Delete(User user) => _userRepository.Delete(user);
+
     }
 }

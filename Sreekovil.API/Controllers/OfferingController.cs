@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using Sreekovil.API.Resources;
 using Sreekovil.Business.Abstractions;
 using Sreekovil.Models.Models;
@@ -9,6 +10,7 @@ namespace Sreekovil.API.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
+    [Authorize]
     public class OfferingController : ControllerBase
     {
 

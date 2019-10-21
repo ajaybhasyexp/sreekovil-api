@@ -48,7 +48,7 @@ namespace Sreekovil.API
             services.AddTransient<IOfferingService, OfferingService>();
             services.AddTransient<IDeityService, DeityService>();
             services.AddTransient<IOfferingTransactionService, OfferingTransactionService>();
-
+            
             services.AddLocalization(o => o.ResourcesPath = "Resources");
             services.Configure<RequestLocalizationOptions>(options =>
             {
@@ -73,11 +73,11 @@ namespace Sreekovil.API
 
             // configure jwt authentication
             var appSettings = appSettingsSection.Get<AppSettings>();
-            var key = Encoding.ASCII.GetBytes(appSettings.Secret);
+            var key = Encoding.ASCII.GetBytes(appSettings.Jwt.Secret );
 
             services.AddSwaggerGen(c =>
             {
-                c.SwaggerDoc("v1", new Info { Title = "My API", Version = "v1" });
+                c.SwaggerDoc("v1", new Info { Title = "Sreekovil API", Version = "v1" });
             });
 
             services.AddAuthentication(x =>

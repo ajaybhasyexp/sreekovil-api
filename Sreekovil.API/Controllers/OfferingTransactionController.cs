@@ -1,3 +1,4 @@
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Sreekovil.API.Resources;
 using Sreekovil.Business.Abstractions;
@@ -9,6 +10,7 @@ namespace Sreekovil.API.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
+    [Authorize]
     public class OfferingTransactionController : ControllerBase
     {
 

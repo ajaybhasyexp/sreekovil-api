@@ -8,7 +8,7 @@ using System.Collections.Generic;
 
 namespace Sreekovil.API.Controllers
 {
-    //[Authorize]
+    [Authorize]
     [Route("api/[controller]")]
     [ApiController]
     public class UserController : ControllerBase

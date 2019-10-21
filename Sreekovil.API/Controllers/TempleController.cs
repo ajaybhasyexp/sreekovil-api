@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using Sreekovil.API.Resources;
 using Sreekovil.Business.Abstractions;
 using Sreekovil.Models.Models;
@@ -10,6 +11,7 @@ namespace Sreekovil.API.Controllers
     //[Authorize]
     [Route("api/[controller]")]
     [ApiController]
+    [Authorize]
     public class TempleController : ControllerBase
     {
         #region Private members

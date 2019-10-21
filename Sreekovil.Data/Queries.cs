@@ -51,5 +51,8 @@
         public static readonly string GetUnpaidStudents = @"Select DISTINCT s.StudentName, s.Id from studentassignments sa 
                                                             INNER JOIN students s ON s.id = sa.studentid
                                                             where sa.ReceiptId IS null";
+
+        public static readonly string GetTempleByUserId = @"Select * from Users u INNER JOIN Temples t 
+                                                            on u.TempleId = t.Id where u.Id = {0}";
     }
 }

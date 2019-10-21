@@ -12,5 +12,8 @@ namespace Sreekovil.Models.Models
 
         [Write(false)]
         public string Token { get; set; }
+
+        [Write(false)]
+        public Temple Temple { get; set; }
     }
 }

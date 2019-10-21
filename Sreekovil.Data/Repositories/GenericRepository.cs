@@ -19,7 +19,7 @@ namespace Sreekovil.Data.Repositories
         /// <summary>
         /// The common property to get connection.
         /// </summary>
-        private IDbConnection Connection
+        public IDbConnection Connection
         {
             get
             {

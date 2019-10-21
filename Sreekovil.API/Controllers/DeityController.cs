@@ -1,14 +1,17 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using Sreekovil.API.Resources;
 using Sreekovil.Business.Abstractions;
 using Sreekovil.Models.Models;
 using System;
 using System.Collections.Generic;
+using System.Security.Claims;
 
 namespace Sreekovil.API.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
+    [Authorize]
     public class DeityController : ControllerBase
     {
         #region Private Properties
@@ -23,6 +26,7 @@ namespace Sreekovil.API.Controllers
         /// </summary>
         private IDeityService _deityService { get; set; }
 
+
         #endregion
 
         #region Constructor
@@ -35,6 +39,15 @@ namespace Sreekovil.API.Controllers
 
         #endregion
 
+        #region Private Methods
+
+        private string GetName()
+        {
+            var claimsIDentity = HttpContext.User.Identity as ClaimsIdentity;
+            return claimsIDentity.FindFirst(ClaimTypes.Name).Value;
+        }
+
+        #endregion
 
         #region Public Methods
 
@@ -48,6 +61,7 @@ namespace Sreekovil.API.Controllers
             ResponseDto<List<Deity>> response = new ResponseDto<List<Deity>>(_commonResource);
             try
             {
+                var temple = GetName();
                 response.Data = _deityService.GetAll();
                 return response;
 
