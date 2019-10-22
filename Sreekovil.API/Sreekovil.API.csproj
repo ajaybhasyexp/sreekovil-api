@@ -35,4 +35,10 @@
     <ProjectReference Include="..\Sreekovil.Models\Sreekovil.Models.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <None Update="Sreekovil.API.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+
 </Project>

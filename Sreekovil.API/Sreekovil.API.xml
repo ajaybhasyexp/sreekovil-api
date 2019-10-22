@@ -1,0 +1,219 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Sreekovil.API</name>
+    </assembly>
+    <members>
+        <member name="P:Sreekovil.API.Controllers.DeityController._commonResource">
+            <summary>
+            The common resource property.
+            </summary>
+        </member>
+        <member name="P:Sreekovil.API.Controllers.DeityController._deityService">
+            <summary>
+            The service for deity model.
+            </summary>
+        </member>
+        <member name="M:Sreekovil.API.Controllers.DeityController.GetAll">
+            <summary>
+            Gets all the Deity entities.
+            </summary>
+            <returns>A list of Deity entity.</returns>
+        </member>
+        <member name="M:Sreekovil.API.Controllers.DeityController.Get(System.Int32)">
+            <summary>
+            Get the Deity entity based on the id.
+            </summary>
+            <param name="id">The identfier.</param>
+            <returns>An Deity entity.</returns>
+        </member>
+        <member name="M:Sreekovil.API.Controllers.DeityController.Save(Sreekovil.Models.Models.Deity)">
+            <summary>
+            Saves or updates the Deity.
+            </summary>
+            <param name="Deity">Deity entity to save.</param>
+            <returns>Saved Deity entity.</returns>
+        </member>
+        <member name="M:Sreekovil.API.Controllers.DeityController.Delete(Sreekovil.Models.Models.Deity)">
+            <summary>
+            Deletes the Deity entity.
+            </summary>
+            <param name="Deity">The Deity entity to delete.</param>
+            <returns>A boolean result based on deletion.</returns>
+        </member>
+        <member name="P:Sreekovil.API.Controllers.OfferingController._offeringService">
+            <summary>
+            The branch service for busines methods.
+            </summary>
+        </member>
+        <member name="P:Sreekovil.API.Controllers.OfferingController._commonResource">
+            <summary>
+            The common resource file.
+            </summary>
+        </member>
+        <member name="M:Sreekovil.API.Controllers.OfferingController.#ctor(Sreekovil.Business.Abstractions.IOfferingService,Sreekovil.API.Resources.ICommonResource)">
+            <summary>
+            Constructor for temple controller.
+            </summary>
+            <param name="templeService">The service for temple.</param>
+            <param name="commonResource"></param>
+        </member>
+        <member name="M:Sreekovil.API.Controllers.OfferingController.GetAll">
+            <summary>
+            Gets all the Offering entities.
+            </summary>
+            <returns>A list of Offering entity.</returns>
+        </member>
+        <member name="M:Sreekovil.API.Controllers.OfferingController.Get(System.Int32)">
+            <summary>
+            Get the offering entity based on the id.
+            </summary>
+            <param name="id">The identfier.</param>
+            <returns>An offering entity.</returns>
+        </member>
+        <member name="M:Sreekovil.API.Controllers.OfferingController.Save(Sreekovil.Models.Models.Offering)">
+            <summary>
+            Saves or updates the Offering.
+            </summary>
+            <param name="offering">Offering entity to save.</param>
+            <returns>Saved Offering entity.</returns>
+        </member>
+        <member name="M:Sreekovil.API.Controllers.OfferingController.Delete(Sreekovil.Models.Models.Offering)">
+            <summary>
+            Deletes the offering entity.
+            </summary>
+            <param name="offering">The offering entity to delete.</param>
+            <returns>A boolean result based on deletion.</returns>
+        </member>
+        <member name="P:Sreekovil.API.Controllers.OfferingPreBookingController._commonResource">
+            <summary>
+            The common resource property.
+            </summary>
+        </member>
+        <member name="P:Sreekovil.API.Controllers.OfferingPreBookingController._offeringPreBookingService">
+            <summary>
+            The service for OfferingPreBooking model.
+            </summary>
+        </member>
+        <member name="M:Sreekovil.API.Controllers.OfferingPreBookingController.GetAll">
+            <summary>
+            Gets all the OfferingPreBooking entities.
+            </summary>
+            <returns>A list of OfferingPreBooking entity.</returns>
+        </member>
+        <member name="M:Sreekovil.API.Controllers.OfferingPreBookingController.Get(System.Int32)">
+            <summary>
+            Get the OfferingPreBooking entity based on the id.
+            </summary>
+            <param name="id">The identfier.</param>
+            <returns>An OfferingPreBooking entity.</returns>
+        </member>
+        <member name="M:Sreekovil.API.Controllers.OfferingPreBookingController.Save(Sreekovil.Models.Models.OfferingPreBooking)">
+            <summary>
+            Saves or updates the OfferingPreBooking.
+            </summary>
+            <param name="OfferingPreBooking">OfferingPreBooking entity to save.</param>
+            <returns>Saved OfferingPreBooking entity.</returns>
+        </member>
+        <member name="M:Sreekovil.API.Controllers.OfferingPreBookingController.Delete(Sreekovil.Models.Models.OfferingPreBooking)">
+            <summary>
+            Deletes the OfferingPreBooking entity.
+            </summary>
+            <param name="OfferingPreBooking">The OfferingPreBooking entity to delete.</param>
+            <returns>A boolean result based on deletion.</returns>
+        </member>
+        <member name="P:Sreekovil.API.Controllers.OfferingTransactionController._offeringTransactionService">
+            <summary>
+            The branch service for busines methods.
+            </summary>
+        </member>
+        <member name="P:Sreekovil.API.Controllers.OfferingTransactionController._commonResource">
+            <summary>
+            The common resource file.
+            </summary>
+        </member>
+        <member name="M:Sreekovil.API.Controllers.OfferingTransactionController.#ctor(Sreekovil.Business.Abstractions.IOfferingTransactionService,Sreekovil.API.Resources.ICommonResource)">
+            <summary>
+            Constructor for temple controller.
+            </summary>
+            <param name="templeService">The service for temple.</param>
+            <param name="commonResource"></param>
+        </member>
+        <member name="M:Sreekovil.API.Controllers.OfferingTransactionController.GetAll">
+            <summary>
+            Gets all the temple entities.
+            </summary>
+            <returns>A list of temple entity.</returns>
+        </member>
+        <member name="M:Sreekovil.API.Controllers.OfferingTransactionController.Get(System.Int32)">
+            <summary>
+            Get the temple entity based on the id.
+            </summary>
+            <param name="id">The identfier.</param>
+            <returns>A temple entity.</returns>
+        </member>
+        <member name="M:Sreekovil.API.Controllers.OfferingTransactionController.Save(Sreekovil.Models.Models.OfferingTransaction)">
+            <summary>
+            Saves or updates the temple.
+            </summary>
+            <param name="temple">Temple entity to save.</param>
+            <returns>Saved temple entity.</returns>
+        </member>
+        <member name="M:Sreekovil.API.Controllers.OfferingTransactionController.Delete(Sreekovil.Models.Models.OfferingTransaction)">
+            <summary>
+            Deletes the temple entity.
+            </summary>
+            <param name="temple">The temple entity to delete.</param>
+            <returns>A boolean result based on deletion.</returns>
+        </member>
+        <member name="P:Sreekovil.API.Controllers.TempleController._templeService">
+            <summary>
+            The branch service for busines methods.
+            </summary>
+        </member>
+        <member name="P:Sreekovil.API.Controllers.TempleController._commonResource">
+            <summary>
+            The common resource file.
+            </summary>
+        </member>
+        <member name="M:Sreekovil.API.Controllers.TempleController.#ctor(Sreekovil.Business.Abstractions.ITempleService,Sreekovil.API.Resources.ICommonResource)">
+            <summary>
+            Constructor for temple controller.
+            </summary>
+            <param name="templeService">The service for temple.</param>
+            <param name="commonResource"></param>
+        </member>
+        <member name="M:Sreekovil.API.Controllers.TempleController.GetAll">
+            <summary>
+            Gets all the temple entities.
+            </summary>
+            <returns>A list of temple entity.</returns>
+        </member>
+        <member name="M:Sreekovil.API.Controllers.TempleController.Get(System.Int32)">
+            <summary>
+            Get the temple entity based on the id.
+            </summary>
+            <param name="id">The identfier.</param>
+            <returns>A temple entity.</returns>
+        </member>
+        <member name="M:Sreekovil.API.Controllers.TempleController.Save(Sreekovil.Models.Models.Temple)">
+            <summary>
+            Saves or updates the temple.
+            </summary>
+            <param name="temple">Temple entity to save.</param>
+            <returns>Saved temple entity.</returns>
+        </member>
+        <member name="M:Sreekovil.API.Controllers.TempleController.Delete(Sreekovil.Models.Models.Temple)">
+            <summary>
+            Deletes the temple entity.
+            </summary>
+            <param name="temple">The temple entity to delete.</param>
+            <returns>A boolean result based on deletion.</returns>
+        </member>
+        <member name="P:Sreekovil.API.Controllers.UserController._commonResource">
+            <summary>
+            The common resource file.
+            </summary>
+        </member>
+    </members>
+</doc>
