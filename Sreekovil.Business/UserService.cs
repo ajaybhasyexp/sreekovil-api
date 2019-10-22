@@ -79,7 +79,7 @@ namespace Sreekovil.Business
                     new Claim(CustomClaims.TempleId,temple.Id.ToString())
                     //new Claim(ClaimTypes.Role,user.UserRoleId.ToString())
                 }),
-                Expires = DateTime.UtcNow.AddMinutes(_appSettings.Jwt.ExpiryInMinutes),
+                //Expires = DateTime.UtcNow.AddDays(_appSettings.Jwt.ExpiryDays),
                 SigningCredentials = new SigningCredentials(new SymmetricSecurityKey(key), SecurityAlgorithms.HmacSha256Signature)
             };
             var token = tokenHandler.CreateToken(tokenDescriptor);
