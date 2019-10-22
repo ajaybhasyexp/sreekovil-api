@@ -85,7 +85,7 @@ namespace Sreekovil.API
             {
                 c.SwaggerDoc("v1", new Info { Title = "Sreekovil API", Version = "v1" });
 
-                var xmlFile = $"{Assembly.GetExecutingAssembly().GetName().Name}.XML";
+                var xmlFile = $"{Assembly.GetExecutingAssembly().GetName().Name}.xml";
                 var xmlPath = Path.Combine(AppContext.BaseDirectory, xmlFile);
 
                 //... and tell Swagger to use those XML comments.
