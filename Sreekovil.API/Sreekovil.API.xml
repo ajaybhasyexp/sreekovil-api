@@ -4,6 +4,11 @@
         <name>Sreekovil.API</name>
     </assembly>
     <members>
+        <member name="T:Sreekovil.API.Controllers.DeityController">
+            <summary>
+            The controller with deity related methods.
+            </summary>
+        </member>
         <member name="P:Sreekovil.API.Controllers.DeityController._commonResource">
             <summary>
             The common resource property.
@@ -13,6 +18,12 @@
             <summary>
             The service for deity model.
             </summary>
+        </member>
+        <member name="M:Sreekovil.API.Controllers.DeityController.GetTempleId">
+            <summary>
+            Gets the temple id from token.
+            </summary>
+            <returns>The temple id</returns>
         </member>
         <member name="M:Sreekovil.API.Controllers.DeityController.GetAll">
             <summary>
@@ -41,6 +52,11 @@
             <param name="Deity">The Deity entity to delete.</param>
             <returns>A boolean result based on deletion.</returns>
         </member>
+        <member name="T:Sreekovil.API.Controllers.OfferingController">
+            <summary>
+            The controller that contains methods for offering.
+            </summary>
+        </member>
         <member name="P:Sreekovil.API.Controllers.OfferingController._offeringService">
             <summary>
             The branch service for busines methods.
@@ -50,6 +66,12 @@
             <summary>
             The common resource file.
             </summary>
+        </member>
+        <member name="M:Sreekovil.API.Controllers.OfferingController.GetTempleId">
+            <summary>
+            Gets the temple id from token.
+            </summary>
+            <returns>The temple id</returns>
         </member>
         <member name="M:Sreekovil.API.Controllers.OfferingController.#ctor(Sreekovil.Business.Abstractions.IOfferingService,Sreekovil.API.Resources.ICommonResource)">
             <summary>

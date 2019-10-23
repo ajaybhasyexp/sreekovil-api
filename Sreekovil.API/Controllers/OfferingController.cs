@@ -2,12 +2,17 @@
 using Microsoft.AspNetCore.Mvc;
 using Sreekovil.API.Resources;
 using Sreekovil.Business.Abstractions;
+using Sreekovil.Models.Common;
 using Sreekovil.Models.Models;
 using System;
 using System.Collections.Generic;
+using System.Security.Claims;
 
 namespace Sreekovil.API.Controllers
 {
+    /// <summary>
+    /// The controller that contains methods for offering.
+    /// </summary>
     [Route("api/[controller]")]
     [ApiController]
     [Authorize]
@@ -28,6 +33,23 @@ namespace Sreekovil.API.Controllers
 
         #endregion
 
+        #region Private Methods
+
+        /// <summary>
+        /// Gets the temple id from token.
+        /// </summary>
+        /// <returns>The temple id</returns>
+        private int GetTempleId()
+        {
+            var claimsIDentity = HttpContext.User.Identity as ClaimsIdentity;
+            var templeId = claimsIDentity.FindFirst(CustomClaims.TempleId).Value;
+            return Convert.ToInt32(templeId);
+        }
+
+        #endregion
+
+        #region Constructor
+
         /// <summary>
         /// Constructor for temple controller.
         /// </summary>
@@ -38,6 +60,8 @@ namespace Sreekovil.API.Controllers
             _offeringService = offeringService;
             _commonResource = commonResource;
         }
+
+        #endregion
 
         #region Public Methods
 

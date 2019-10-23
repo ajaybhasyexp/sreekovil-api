@@ -2,6 +2,7 @@
 using Microsoft.AspNetCore.Mvc;
 using Sreekovil.API.Resources;
 using Sreekovil.Business.Abstractions;
+using Sreekovil.Models.Common;
 using Sreekovil.Models.Models;
 using System;
 using System.Collections.Generic;
@@ -9,6 +10,9 @@ using System.Security.Claims;
 
 namespace Sreekovil.API.Controllers
 {
+    /// <summary>
+    /// The controller with deity related methods.
+    /// </summary>
     [Route("api/[controller]")]
     [ApiController]
     [Authorize]
@@ -41,10 +45,15 @@ namespace Sreekovil.API.Controllers
 
         #region Private Methods
 
-        private string GetName()
+        /// <summary>
+        /// Gets the temple id from token.
+        /// </summary>
+        /// <returns>The temple id</returns>
+        private int GetTempleId()
         {
             var claimsIDentity = HttpContext.User.Identity as ClaimsIdentity;
-            return claimsIDentity.FindFirst(ClaimTypes.Name).Value;
+            var templeId = claimsIDentity.FindFirst(CustomClaims.TempleId).Value;
+            return Convert.ToInt32(templeId);
         }
 
         #endregion
@@ -61,7 +70,6 @@ namespace Sreekovil.API.Controllers
             ResponseDto<List<Deity>> response = new ResponseDto<List<Deity>>(_commonResource);
             try
             {
-                var temple = GetName();
                 response.Data = _deityService.GetAll();
                 return response;
 
