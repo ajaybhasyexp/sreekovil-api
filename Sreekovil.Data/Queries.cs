@@ -54,5 +54,7 @@
 
         public static readonly string GetTempleByUserId = @"Select * from Users u INNER JOIN Temples t 
                                                             on u.TempleId = t.Id where u.Id = {0}";
+
+        public static readonly string GetOfferingsByTempleId = @"Select * from Offerings where TempleId= {0}";
     }
 }

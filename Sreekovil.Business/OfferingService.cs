@@ -37,7 +37,7 @@ namespace Sreekovil.Business
         /// <returns>A list of offering</returns>
         public List<Offering> GetOfferingsByTempleId(int templeId)
         {
-            throw new NotImplementedException();
+            return _offeringRepository.GetOfferingsByTempleId(templeId);
         }
 
         #endregion
