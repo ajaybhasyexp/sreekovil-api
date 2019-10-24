@@ -55,6 +55,11 @@
         public static readonly string GetTempleByUserId = @"Select * from Users u INNER JOIN Temples t 
                                                             on u.TempleId = t.Id where u.Id = {0}";
 
-        public static readonly string GetOfferingsByTempleId = @"Select * from Offerings where TempleId= {0}";
+        public static readonly string GetOfferingsByTempleId = @"Select OfferingName,Price,MaxPerDay,DeityId,
+                                                                IsBookable,OfferingCode,o.CreatedBy,o.CreatedDate,
+                                                                o.UpdatedBy,o.UpdatedDate,d.DeityName from Offerings as o
+                                                                INNER JOIN Deitys as d
+                                                                ON o.DeityId = d.Id
+                                                                where o.TempleId = {0}";
     }
 }
