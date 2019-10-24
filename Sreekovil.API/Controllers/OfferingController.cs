@@ -75,7 +75,8 @@ namespace Sreekovil.API.Controllers
             ResponseDto<List<Offering>> response = new ResponseDto<List<Offering>>(_commonResource);
             try
             {
-                response.Data = _offeringService.GetAll();
+                var templeId = GetTempleId();
+                response.Data = _offeringService.GetOfferingsByTempleId(templeId);
                 return response;
 
             }
