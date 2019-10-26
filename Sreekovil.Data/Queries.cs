@@ -55,7 +55,7 @@
         public static readonly string GetTempleByUserId = @"Select * from Users u INNER JOIN Temples t 
                                                             on u.TempleId = t.Id where u.Id = {0}";
 
-        public static readonly string GetOfferingsByTempleId = @"Select OfferingName,Price,MaxPerDay,DeityId,
+        public static readonly string GetOfferingsByTempleId = @"Select o.Id,OfferingName,Price,MaxPerDay,DeityId,o.TempleId,
                                                                 IsBookable,OfferingCode,o.CreatedBy,o.CreatedDate,
                                                                 o.UpdatedBy,o.UpdatedDate,d.DeityName from Offerings as o
                                                                 INNER JOIN Deitys as d
