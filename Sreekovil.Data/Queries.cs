@@ -61,5 +61,7 @@
                                                                 INNER JOIN Deitys as d
                                                                 ON o.DeityId = d.Id
                                                                 where o.TempleId = {0}";
+
+        public static readonly string GetDeityByDietyId = @"select DeityName,IsMain,Description,TempleId from Deitys Where TempleId = {0}";
     }
 }

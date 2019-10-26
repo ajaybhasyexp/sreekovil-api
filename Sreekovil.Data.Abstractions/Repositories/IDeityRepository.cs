@@ -7,5 +7,6 @@ namespace Sreekovil.Data.Abstractions.Repositories
 {
     public interface IDeityRepository : IGenericRepository<Deity>
     {
+        List<Deity> GetDietyById(int deityId);
     }
 }

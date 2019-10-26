@@ -70,7 +70,8 @@ namespace Sreekovil.API.Controllers
             ResponseDto<List<Deity>> response = new ResponseDto<List<Deity>>(_commonResource);
             try
             {
-                response.Data = _deityService.GetAll();
+                var templeId = GetTempleId();
+                response.Data = _deityService.GetDietyById(templeId);
                 return response;
 
             }
