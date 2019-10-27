@@ -1,4 +1,5 @@
 ﻿using System;
+using Dapper.Contrib.Extensions;
 
 namespace Sreekovil.Models.Models
 {
@@ -15,5 +16,23 @@ namespace Sreekovil.Models.Models
         public string Remarks { get; set; }
 
         public DateTime Date { get; set; }
+
+        /// <summary>
+        /// The name of the Offering in this Offering Transaction.
+        /// </summary>
+        [Write(false)]
+        public string OfferingName { get; set; }
+
+        /// <summary>
+        /// The name of the StarSign in this Offering Transaction.
+        /// </summary>
+        [Write(false)]
+        public string StarSignName { get; set; }
+
+        /// <summary>
+        /// The name of the Deity in this Offering Transaction.
+        /// </summary>
+        [Write(false)]
+        public string DeityName { get; set; }
     }
 }

@@ -64,16 +64,6 @@
 
         public static readonly string GetDeityByDietyId = @"select DeityName,IsMain,Description,TempleId from Deitys Where TempleId = {0}";
 
-        public static readonly string GetOfferingTransactionByFilters = @"SELECT OFT.Name
-	                                                                    ,OFT.Remarks
-	                                                                    ,OFT.`Date`
-	                                                                    ,o.OfferingName
-	                                                                    ,ss.StarSignName
-	                                                                    ,d.DeityName
-                                                                        FROM OfferingTransactions OFT
-                                                                        INNER JOIN Offerings o ON OFT.OfferingId = o.Id
-                                                                        INNER JOIN Deitys d ON o.DeityId = d.Id
-                                                                        INNER JOIN StarSigns ss ON OFT.StarSignId = ss.Id
-                                                                        WHERE OFT.TempleId = {0} DATE(OFT.`Date`) BETWEEN '{1}' and '{2}'";
+        public static readonly string GetOfferingTransactionByFilters = @"SELECT OFT.Name,OFT.Remarks,OFT.`Date` ,o.OfferingName,ss.StarSignName ,d.DeityName FROM OfferingTransactions OFT INNER JOIN Offerings o ON OFT.OfferingId = o.Id INNER JOIN Deitys d ON o.DeityId = d.Id INNER JOIN StarSigns ss ON OFT.StarSignId = ss.Id WHERE OFT.TempleId = {0} AND DATE(OFT.`Date`) BETWEEN '{1}' and '{2}'";
     }
 }

@@ -138,7 +138,6 @@ namespace Sreekovil.API.Controllers
                 filter.templeId = GetTempleId();
                 response.Data = _offeringTransactionService.GetOfferingTransactionByFilters(filter);
                 return response;
-
             }
             catch
             {
