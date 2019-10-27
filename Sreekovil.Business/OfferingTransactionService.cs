@@ -4,6 +4,7 @@ using Sreekovil.Models.Models;
 using System;
 using System.Collections.Generic;
 using System.Text;
+using Sreekovil.Models.Common;
 
 namespace Sreekovil.Business
 {
@@ -28,8 +29,12 @@ namespace Sreekovil.Business
 
         }
 
-        //#region Public Methods
+        #region Public Methods
 
+        public List<OfferingTransaction> GetOfferingTransactionByFilters(Filters filters)
+        {
+           return _offeringTransactionRepository.GetOfferingTransactionByFilters(filters);
+        }
         ///// <summary>
         ///// A method to get the offering by its Id.
         ///// </summary>
@@ -68,6 +73,6 @@ namespace Sreekovil.Business
         //    _offeringRepository.Delete(offering);
         //}
 
-        //#endregion
+        #endregion
     }
 }

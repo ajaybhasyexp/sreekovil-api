@@ -188,6 +188,18 @@
             <param name="temple">The temple entity to delete.</param>
             <returns>A boolean result based on deletion.</returns>
         </member>
+        <member name="M:Sreekovil.API.Controllers.OfferingTransactionController.GetOfferingTransactionByFilters(Sreekovil.Models.Common.Filters)">
+            <summary>
+            Gets all the temple entities.
+            </summary>
+            <returns>A list of temple entity.</returns>
+        </member>
+        <member name="M:Sreekovil.API.Controllers.OfferingTransactionController.GetTempleId">
+            <summary>
+            Gets the temple id from token.
+            </summary>
+            <returns>The temple id</returns>
+        </member>
         <member name="P:Sreekovil.API.Controllers.TempleController._templeService">
             <summary>
             The branch service for busines methods.

@@ -5,6 +5,8 @@ using Sreekovil.Business.Abstractions;
 using Sreekovil.Models.Models;
 using System;
 using System.Collections.Generic;
+using Sreekovil.Models.Common;
+using System.Security.Claims;
 
 namespace Sreekovil.API.Controllers
 {
@@ -120,6 +122,39 @@ namespace Sreekovil.API.Controllers
             {
                 return response.HandleDeleteException(response, ex);
             }
+        }
+
+        /// <summary>
+        /// Gets all the temple entities.
+        /// </summary>
+        /// <returns>A list of temple entity.</returns>
+        [HttpPost]
+        [Route("filter")]
+        public ResponseDto<List<OfferingTransaction>> GetOfferingTransactionByFilters(Filters filter)
+        {
+            ResponseDto<List<OfferingTransaction>> response = new ResponseDto<List<OfferingTransaction>>(_commonResource);
+            try
+            {
+                filter.templeId = GetTempleId();
+                response.Data = _offeringTransactionService.GetOfferingTransactionByFilters(filter);
+                return response;
+
+            }
+            catch
+            {
+                return response.HandleException(response);
+            }
+        }
+
+        /// <summary>
+        /// Gets the temple id from token.
+        /// </summary>
+        /// <returns>The temple id</returns>
+        private int GetTempleId()
+        {
+            var claimsIDentity = HttpContext.User.Identity as ClaimsIdentity;
+            var templeId = claimsIDentity.FindFirst(CustomClaims.TempleId).Value;
+            return Convert.ToInt32(templeId);
         }
     }
 }

@@ -1,4 +1,4 @@
-﻿namespace COSMO.Models.Common
+﻿namespace Sreekovil.Models.Common
 {
     public class ExceptionConstants
     {
