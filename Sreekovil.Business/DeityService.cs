@@ -10,15 +10,15 @@ namespace Sreekovil.Business
         /// <summary>
         /// The repository for offering entity.
         /// </summary>
-        public IDeityRepository _DeityRepository { get; set; }
+        public IDeityRepository _deityRepository { get; set; }
 
         public DeityService(IDeityRepository deityRepository) : base(deityRepository)
         {
-
+            _deityRepository = deityRepository;
         }
         public List<Deity> GetDietyById(int DeityId)
         {
-            return _DeityRepository.GetDietyById(DeityId);
+            return _deityRepository.GetDietyById(DeityId);
         }
     }
 }
