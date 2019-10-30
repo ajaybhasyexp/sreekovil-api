@@ -7,5 +7,7 @@ namespace Sreekovil.Data.Abstractions.Repositories
     public interface IOfferingTransactionRepository : IGenericRepository<OfferingTransaction>
     {
         List<OfferingTransaction> GetOfferingTransactionByFilters(Filters filter);
+
+        List<OfferingTransaction> SaveTransactions(List<OfferingTransaction> transactions);
     }
 }

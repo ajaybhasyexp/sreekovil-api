@@ -144,6 +144,11 @@
             <param name="OfferingPreBooking">The OfferingPreBooking entity to delete.</param>
             <returns>A boolean result based on deletion.</returns>
         </member>
+        <member name="T:Sreekovil.API.Controllers.OfferingTransactionController">
+            <summary>
+            Controller for methods of Offering transactions.
+            </summary>
+        </member>
         <member name="P:Sreekovil.API.Controllers.OfferingTransactionController._offeringTransactionService">
             <summary>
             The branch service for busines methods.
@@ -154,11 +159,17 @@
             The common resource file.
             </summary>
         </member>
+        <member name="M:Sreekovil.API.Controllers.OfferingTransactionController.GetTempleId">
+            <summary>
+            Gets the temple id from token.
+            </summary>
+            <returns>The temple id</returns>
+        </member>
         <member name="M:Sreekovil.API.Controllers.OfferingTransactionController.#ctor(Sreekovil.Business.Abstractions.IOfferingTransactionService,Sreekovil.API.Resources.ICommonResource)">
             <summary>
             Constructor for temple controller.
             </summary>
-            <param name="templeService">The service for temple.</param>
+            <param name="offeringTransactionService">The service for offering transaction.</param>
             <param name="commonResource"></param>
         </member>
         <member name="M:Sreekovil.API.Controllers.OfferingTransactionController.GetAll">
@@ -178,8 +189,21 @@
             <summary>
             Saves or updates the temple.
             </summary>
-            <param name="temple">Temple entity to save.</param>
+            <param name="offeringTransaction">Offering transaction entity to save.</param>
             <returns>Saved temple entity.</returns>
+        </member>
+        <member name="M:Sreekovil.API.Controllers.OfferingTransactionController.GetOfferingTransactionByFilters(Sreekovil.Models.Common.Filters)">
+            <summary>
+            Gets list of filtered transactions.
+            </summary>
+            <returns>A list of offering transactions.</returns>
+        </member>
+        <member name="M:Sreekovil.API.Controllers.OfferingTransactionController.SaveTransactions(System.Collections.Generic.List{Sreekovil.Models.Models.OfferingTransaction})">
+            <summary>
+            Saves a list of offering transaction.
+            </summary>
+            <param name="transactions">The transaction to save.</param>
+            <returns>A list of offering transactions</returns>
         </member>
         <member name="M:Sreekovil.API.Controllers.OfferingTransactionController.Delete(Sreekovil.Models.Models.OfferingTransaction)">
             <summary>
@@ -187,18 +211,6 @@
             </summary>
             <param name="temple">The temple entity to delete.</param>
             <returns>A boolean result based on deletion.</returns>
-        </member>
-        <member name="M:Sreekovil.API.Controllers.OfferingTransactionController.GetOfferingTransactionByFilters(Sreekovil.Models.Common.Filters)">
-            <summary>
-            Gets all the temple entities.
-            </summary>
-            <returns>A list of temple entity.</returns>
-        </member>
-        <member name="M:Sreekovil.API.Controllers.OfferingTransactionController.GetTempleId">
-            <summary>
-            Gets the temple id from token.
-            </summary>
-            <returns>The temple id</returns>
         </member>
         <member name="P:Sreekovil.API.Controllers.TempleController._templeService">
             <summary>

@@ -10,6 +10,9 @@ using System.Security.Claims;
 
 namespace Sreekovil.API.Controllers
 {
+    /// <summary>
+    /// Controller for methods of Offering transactions.
+    /// </summary>
     [Route("api/[controller]")]
     [ApiController]
     [Authorize]
@@ -30,10 +33,23 @@ namespace Sreekovil.API.Controllers
 
         #endregion
 
+        #region Public Methods
+
+        /// <summary>
+        /// Gets the temple id from token.
+        /// </summary>
+        /// <returns>The temple id</returns>
+        private int GetTempleId()
+        {
+            var claimsIDentity = HttpContext.User.Identity as ClaimsIdentity;
+            var templeId = claimsIDentity.FindFirst(CustomClaims.TempleId).Value;
+            return Convert.ToInt32(templeId);
+        }
+
         /// <summary>
         /// Constructor for temple controller.
         /// </summary>
-        /// <param name="templeService">The service for temple.</param>
+        /// <param name="offeringTransactionService">The service for offering transaction.</param>
         /// <param name="commonResource"></param>
         public OfferingTransactionController(IOfferingTransactionService offeringTransactionService, ICommonResource commonResource)
         {
@@ -87,7 +103,7 @@ namespace Sreekovil.API.Controllers
         /// <summary>
         /// Saves or updates the temple.
         /// </summary>
-        /// <param name="temple">Temple entity to save.</param>
+        /// <param name="offeringTransaction">Offering transaction entity to save.</param>
         /// <returns>Saved temple entity.</returns>
         [HttpPost]
         public ResponseDto<OfferingTransaction> Save([FromBody]OfferingTransaction offeringTransaction)
@@ -98,7 +114,48 @@ namespace Sreekovil.API.Controllers
                 response.Data = _offeringTransactionService.Save(offeringTransaction);
                 return response;
             }
-            catch(Exception ex)
+            catch (Exception ex)
+            {
+                return response.HandleException(response);
+            }
+        }
+
+        /// <summary>
+        /// Gets list of filtered transactions.
+        /// </summary>
+        /// <returns>A list of offering transactions.</returns>
+        [HttpPost]
+        [Route("filter")]
+        public ResponseDto<List<OfferingTransaction>> GetOfferingTransactionByFilters(Filters filter)
+        {
+            ResponseDto<List<OfferingTransaction>> response = new ResponseDto<List<OfferingTransaction>>(_commonResource);
+            try
+            {
+                filter.templeId = GetTempleId();
+                response.Data = _offeringTransactionService.GetOfferingTransactionByFilters(filter);
+                return response;
+            }
+            catch
+            {
+                return response.HandleException(response);
+            }
+        }
+
+        /// <summary>
+        /// Saves a list of offering transaction.
+        /// </summary>
+        /// <param name="transactions">The transaction to save.</param>
+        /// <returns>A list of offering transactions</returns>
+        [HttpPost("receipt")]
+        public ResponseDto<List<OfferingTransaction>> SaveTransactions(List<OfferingTransaction> transactions)
+        {
+            ResponseDto<List<OfferingTransaction>> response = new ResponseDto<List<OfferingTransaction>>(_commonResource);
+            try
+            {
+                response.Data = _offeringTransactionService.SaveTransactions(transactions);
+                return response;
+            }
+            catch
             {
                 return response.HandleException(response);
             }
@@ -124,36 +181,7 @@ namespace Sreekovil.API.Controllers
             }
         }
 
-        /// <summary>
-        /// Gets all the temple entities.
-        /// </summary>
-        /// <returns>A list of temple entity.</returns>
-        [HttpPost]
-        [Route("filter")]
-        public ResponseDto<List<OfferingTransaction>> GetOfferingTransactionByFilters(Filters filter)
-        {
-            ResponseDto<List<OfferingTransaction>> response = new ResponseDto<List<OfferingTransaction>>(_commonResource);
-            try
-            {
-                filter.templeId = GetTempleId();
-                response.Data = _offeringTransactionService.GetOfferingTransactionByFilters(filter);
-                return response;
-            }
-            catch
-            {
-                return response.HandleException(response);
-            }
-        }
+        #endregion
 
-        /// <summary>
-        /// Gets the temple id from token.
-        /// </summary>
-        /// <returns>The temple id</returns>
-        private int GetTempleId()
-        {
-            var claimsIDentity = HttpContext.User.Identity as ClaimsIdentity;
-            var templeId = claimsIDentity.FindFirst(CustomClaims.TempleId).Value;
-            return Convert.ToInt32(templeId);
-        }
     }
 }
