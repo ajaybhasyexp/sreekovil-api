@@ -29,6 +29,6 @@ namespace Sreekovil.Business.Abstractions
         /// Deletes the entity.
         /// </summary>
         /// <param name="entity">The entity to delete.</param>
-        void Delete(T entity);
+        void Delete(int id);
     }
 }

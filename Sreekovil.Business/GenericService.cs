@@ -7,7 +7,7 @@ using System.Text;
 
 namespace Sreekovil.Business
 {
-    public class GenericService<T> where T : Base
+    public class GenericService<T> : IGenericService<T> where T : Base
     {
         public IGenericRepository<T> _repository { get; set; }
 
@@ -49,9 +49,13 @@ namespace Sreekovil.Business
         /// Deletes the entity.
         /// </summary>
         /// <param name="entity">The entity to delete.</param>
-        public void Delete(T entity)
+        public void Delete(int id)
         {
-            _repository.Delete(entity);
+            var entity = _repository.Get(id);
+            if (entity != null)
+            {
+                _repository.Delete(entity);
+            }
         }
     }
 }

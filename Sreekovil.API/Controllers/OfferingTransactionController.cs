@@ -167,7 +167,7 @@ namespace Sreekovil.API.Controllers
         /// <param name="temple">The temple entity to delete.</param>
         /// <returns>A boolean result based on deletion.</returns>
         [HttpDelete]
-        public ResponseDto<bool> Delete([FromBody] OfferingTransaction offeringTransaction)
+        public ResponseDto<bool> Delete([FromBody] int offeringTransaction)
         {
             ResponseDto<bool> response = new ResponseDto<bool>(_commonResource);
             try

@@ -106,7 +106,7 @@ namespace Sreekovil.API.Controllers
         /// <param name="OfferingPreBooking">The OfferingPreBooking entity to delete.</param>
         /// <returns>A boolean result based on deletion.</returns>
         [HttpDelete]
-        public ResponseDto<bool> Delete([FromBody] OfferingPreBooking offeringPreBooking)
+        public ResponseDto<bool> Delete([FromBody] int offeringPreBooking)
         {
             ResponseDto<bool> response = new ResponseDto<bool>(_commonResource);
             try

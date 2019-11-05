@@ -45,7 +45,7 @@
             <param name="Deity">Deity entity to save.</param>
             <returns>Saved Deity entity.</returns>
         </member>
-        <member name="M:Sreekovil.API.Controllers.DeityController.Delete(Sreekovil.Models.Models.Deity)">
+        <member name="M:Sreekovil.API.Controllers.DeityController.Delete(System.Int32)">
             <summary>
             Deletes the Deity entity.
             </summary>
@@ -100,7 +100,7 @@
             <param name="offering">Offering entity to save.</param>
             <returns>Saved Offering entity.</returns>
         </member>
-        <member name="M:Sreekovil.API.Controllers.OfferingController.Delete(Sreekovil.Models.Models.Offering)">
+        <member name="M:Sreekovil.API.Controllers.OfferingController.Delete(System.Int32)">
             <summary>
             Deletes the offering entity.
             </summary>
@@ -137,7 +137,7 @@
             <param name="OfferingPreBooking">OfferingPreBooking entity to save.</param>
             <returns>Saved OfferingPreBooking entity.</returns>
         </member>
-        <member name="M:Sreekovil.API.Controllers.OfferingPreBookingController.Delete(Sreekovil.Models.Models.OfferingPreBooking)">
+        <member name="M:Sreekovil.API.Controllers.OfferingPreBookingController.Delete(System.Int32)">
             <summary>
             Deletes the OfferingPreBooking entity.
             </summary>
@@ -205,7 +205,7 @@
             <param name="transactions">The transaction to save.</param>
             <returns>A list of offering transactions</returns>
         </member>
-        <member name="M:Sreekovil.API.Controllers.OfferingTransactionController.Delete(Sreekovil.Models.Models.OfferingTransaction)">
+        <member name="M:Sreekovil.API.Controllers.OfferingTransactionController.Delete(System.Int32)">
             <summary>
             Deletes the temple entity.
             </summary>

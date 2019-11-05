@@ -129,7 +129,7 @@ namespace Sreekovil.API.Controllers
         /// <param name="Deity">The Deity entity to delete.</param>
         /// <returns>A boolean result based on deletion.</returns>
         [HttpDelete]
-        public ResponseDto<bool> Delete([FromBody] Deity deity)
+        public ResponseDto<bool> Delete([FromRoute] int deity)
         {
             ResponseDto<bool> response = new ResponseDto<bool>(_commonResource);
             try
