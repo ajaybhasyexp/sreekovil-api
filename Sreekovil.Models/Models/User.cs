@@ -1,6 +1,4 @@
-﻿using Dapper.Contrib.Extensions;
-
-namespace Sreekovil.Models.Models
+﻿namespace Sreekovil.Models.Models
 {
     public class User : Base
     {
@@ -10,10 +8,10 @@ namespace Sreekovil.Models.Models
 
         public int TempleId { get; set; }
 
-        [Write(false)]
+        //[Write(false)]
         public string Token { get; set; }
 
-        [Write(false)]
+        //[Write(false)]
         public Temple Temple { get; set; }
     }
 }

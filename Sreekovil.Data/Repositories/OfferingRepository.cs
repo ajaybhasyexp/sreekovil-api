@@ -1,6 +1,5 @@
-﻿using Dapper;
-using Microsoft.Extensions.Configuration;
-using Sreekovil.Data.Abstractions.Repositories;
+﻿using Sreekovil.Data.Abstractions.Repositories;
+using Sreekovil.Models.DataContext;
 using Sreekovil.Models.Models;
 using System.Collections.Generic;
 using System.Linq;
@@ -15,8 +14,7 @@ namespace Sreekovil.Data.Repositories
         /// THe constuctor that also contains the injected dependencies.
         /// </summary>
         /// <param name="config"></param>
-        public OfferingRepository(IConfiguration config)
-            : base(config)
+        public OfferingRepository(EFDataContext context) : base(context)
         {
         }
 
@@ -31,13 +29,12 @@ namespace Sreekovil.Data.Repositories
         /// <returns>A list of offerings based on the temple</returns>
         public List<Offering> GetOfferingsByTempleId(int templeId)
         {
-            string query = string.Format(Queries.GetOfferingsByTempleId, templeId);
-            using (var conn = Connection)
+            var offerings = dbSet.Where(p => p.TempleId == templeId);
+            if(offerings.Any())
             {
-                conn.Open();
-                return conn.Query<Offering>(query).ToList();
-
+                return offerings.ToList();
             }
+            return null;
         }
 
         #endregion

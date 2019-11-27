@@ -2,19 +2,15 @@
 using Sreekovil.Data.Abstractions.Repositories;
 using Sreekovil.Models.Models;
 using System.Linq;
-using Dapper;
 using System.Collections.Generic;
 using System.Text;
+using Sreekovil.Models.DataContext;
 
 namespace Sreekovil.Data.Repositories
 {
     public class DeityRepository : GenericRepository<Deity>, IDeityRepository
     {
-        /// <summary>
-        /// THe constuctor that also contains the injected dependencies.
-        /// </summary>
-        /// <param name="config"></param>
-        public DeityRepository(IConfiguration config) : base(config)
+        public DeityRepository(EFDataContext context) : base(context)
         {
 
         }
@@ -24,14 +20,15 @@ namespace Sreekovil.Data.Repositories
         /// </summary>
         /// <param name="templeId">The temple identifier.</param>
         /// <returns>A list of offerings based on the temple</returns>
-        public List<Deity> GetDietyById(int deityId)
+        public List<Deity> GetDietyById(int templeId)
         {
-            string query = string.Format(Queries.GetDeityByDietyId, deityId);
-            using (var conn = Connection)
+            var deities = dbSet.Where(p => p.TempleId == templeId);
+            if (deities.Any())
             {
-                conn.Open();
-                return conn.Query<Deity>(query).ToList();
+                return deities.ToList();
             }
+            return null;
+
         }
     }
 }

@@ -1,4 +1,5 @@
-﻿using Dapper.Contrib.Extensions;
+﻿
+using System.Collections.Generic;
 
 namespace Sreekovil.Models.Models
 {
@@ -45,8 +46,15 @@ namespace Sreekovil.Models.Models
         /// <summary>
         /// The name of the diety whom this offering is performed against.
         /// </summary>
-        [Write(false)]
+
         public string DeityName { get; set; }
+
+
+        public Temple Temple { get; set; }
+
+        public IEnumerable<OfferingTransaction> OfferingTransactions { get; set; }
+
+        public IEnumerable<OfferingPreBooking> OfferingPreBookings { get; set; }
 
     }
 }

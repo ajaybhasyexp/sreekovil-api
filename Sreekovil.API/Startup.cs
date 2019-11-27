@@ -12,6 +12,7 @@ using Sreekovil.Business.Abstractions;
 using Sreekovil.Data.Abstractions.Repositories;
 using Sreekovil.Data.Repositories;
 using Sreekovil.Models.Common;
+using Sreekovil.Models.DataContext;
 using Swashbuckle.AspNetCore.Swagger;
 using System;
 using System.Globalization;
@@ -28,11 +29,15 @@ namespace Sreekovil.API
             Configuration = configuration;
         }
 
+        /// <summary>
+        /// The configuration.
+        /// </summary>
         public IConfiguration Configuration { get; }
 
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddDbContext<EFDataContext>();
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
             services.AddTransient<ITempleRepository, TempleRepository>();
             services.AddTransient<IUserRepository, UserRepository>();

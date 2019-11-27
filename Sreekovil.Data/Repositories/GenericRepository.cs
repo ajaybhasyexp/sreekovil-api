@@ -1,10 +1,9 @@
-﻿using Sreekovil.Models.Models;
-using Dapper.Contrib.Extensions;
+﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
-using MySql.Data.MySqlClient;
-using System;
+using Sreekovil.Data.Abstractions.Repositories;
+using Sreekovil.Models.DataContext;
+using Sreekovil.Models.Models;
 using System.Collections.Generic;
-using System.Data;
 using System.Linq;
 
 namespace Sreekovil.Data.Repositories
@@ -12,24 +11,19 @@ namespace Sreekovil.Data.Repositories
     public class GenericRepository<T> where T : Base
     {
         /// <summary>
-        /// The configuration.
+        /// The Dbset.
         /// </summary>
-        private readonly IConfiguration _config;
+        public DbSet<T> dbSet;
 
         /// <summary>
-        /// The common property to get connection.
+        /// The Db context.
         /// </summary>
-        public IDbConnection Connection
-        {
-            get
-            {
-                return new MySqlConnection(_config.GetConnectionString("SreekovilDev"));
-            }
-        }
+        public EFDataContext _context;
 
-        public GenericRepository(IConfiguration config)
+        public GenericRepository(EFDataContext context)
         {
-            _config = config;
+            _context = context;
+            dbSet = _context.Set<T>();
         }
 
         #region Public Methods
@@ -41,11 +35,7 @@ namespace Sreekovil.Data.Repositories
         /// <returns>A single branch entity.</returns>
         public T Get(int id)
         {
-            using (var conn = Connection)
-            {
-                conn.Open();
-                return conn.Get<T>(id);
-            }
+            return dbSet.FirstOrDefault(p => p.Id == id);
         }
 
         /// <summary>
@@ -54,11 +44,7 @@ namespace Sreekovil.Data.Repositories
         /// <returns>A list of branch entity.</returns>
         public List<T> GetAll()
         {
-            using (var conn = Connection)
-            {
-                conn.Open();
-                return conn.GetAll<T>().ToList();
-            }
+            return dbSet.AsEnumerable().ToList();
         }
 
         /// <summary>
@@ -68,32 +54,27 @@ namespace Sreekovil.Data.Repositories
         /// <returns>The saved entity.</returns>
         public T Save(T entity)
         {
-            using (var conn = Connection)
+            if (entity != null)
             {
-                conn.Open();
                 if (entity.Id == 0)
-                {
-                    entity.CreatedDate = DateTime.Now;
-                    entity.UpdatedDate = DateTime.Now;
-                    conn.Insert(entity);
-                }
+                    dbSet.Add(entity);
                 else
-                {
-                    entity.UpdatedDate = DateTime.Now;
-                    conn.Update(entity);
-                }
-                    
-                return entity;
+                    dbSet.Attach(entity);
+                _context.SaveChanges();
             }
+            return entity;
         }
 
+        /// <summary>
+        /// Deletes the entity.
+        /// </summary>
+        /// <param name="entity">the entity to delete.</param>
         public void Delete(T entity)
         {
-            using (var conn = Connection)
+            if (entity != null)
             {
-                 conn.Open();
-                conn.Delete(entity);
-            } 
+                dbSet.Remove(entity);
+            }
         }
 
         #endregion

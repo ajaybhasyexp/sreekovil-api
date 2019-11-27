@@ -17,5 +17,9 @@ namespace Sreekovil.Models.Models
         public DateTime DateOfBooking { get; set; }
 
         public DateTime DateOfOffering { get; set; }
+
+        public Temple Temple { get; set; }
+
+        public Offering Offering { get; set; }
     }
 }

@@ -1,4 +1,6 @@
-﻿namespace Sreekovil.Models.Models
+﻿using System.Collections;
+
+namespace Sreekovil.Models.Models
 {
     public class Deity : Base
     {
@@ -9,5 +11,7 @@
         public string Description { get; set; }
 
         public int TempleId { get; set; }
+
+        public Temple Temple { get; set; }
     }
 }

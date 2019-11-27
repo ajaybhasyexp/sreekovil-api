@@ -1,5 +1,6 @@
 using Microsoft.Extensions.Configuration;
 using Sreekovil.Data.Abstractions.Repositories;
+using Sreekovil.Models.DataContext;
 using Sreekovil.Models.Models;
 using System;
 using System.Collections.Generic;
@@ -13,7 +14,7 @@ namespace Sreekovil.Data.Repositories
         /// THe constuctor that also contains the injected dependencies.
         /// </summary>
         /// <param name="config"></param>
-        public OfferingPreBookingRepository(IConfiguration config) : base(config)
+        public OfferingPreBookingRepository(EFDataContext context) : base(context)
         {
 
         }
