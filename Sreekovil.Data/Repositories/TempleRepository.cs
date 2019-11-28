@@ -2,7 +2,8 @@
 using Microsoft.Extensions.Configuration;
 using Sreekovil.Models.Models;
 using System.Data;
-using Dapper;
+using Sreekovil.Models.DataContext;
+using System.Linq;
 
 namespace Sreekovil.Data.Repositories
 {
@@ -14,8 +15,7 @@ namespace Sreekovil.Data.Repositories
         /// THe constuctor that also contains the injected dependencies.
         /// </summary>
         /// <param name="config"></param>
-        public TempleRepository(IConfiguration config)
-                : base(config)
+        public TempleRepository(EFDataContext context) : base(context)
         {
         }
 
@@ -26,12 +26,12 @@ namespace Sreekovil.Data.Repositories
         /// <returns>A temple object</returns>
         public Temple GetTempleByUserId(int userId)
         {
-            string query = string.Format(Queries.GetTempleByUserId, userId);
-            using (var conn = Connection)
-            {
-                conn.Open();
-                return conn.QueryFirstOrDefault<Temple>(query);
-            }
+            var temple = from tmpl in dbSet
+                         join user in _context.Users
+                         on tmpl.Id equals user.TempleId
+                         where user.Id == userId
+                         select tmpl;
+            return temple.FirstOrDefault();
         }
     }
 }
